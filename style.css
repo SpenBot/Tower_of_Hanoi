@@ -1,8 +1,25 @@
 body {
   background-color: black;
   font-family: 'Press Start 2P', sans-serif;
+  color: white;
+  margin: 0 auto;
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+main {
+  margin: 50px auto;
+
 }
 
 p {
-  font-size: 18px;
+  font-size: 14px;
+}
+
+.instructions {
+  width: 500px;
+  margin: 0 auto;
 }
