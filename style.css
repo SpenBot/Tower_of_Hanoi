@@ -60,32 +60,58 @@ p {
   margin: 30px auto;
 }
 
-#rodBottom {
-  border-bottom: solid white 20px;
-  width: 450px;
+.rods {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 #rodRight {
-  border-right: solid white 20px;
-  width: 20px;
+  background-color: white;
+  width: 15px;
+  height: 180px;
+  margin: 30px auto;
+  position: relative;
+  bottom: -100px;
 }
 
 #rodMiddle {
-  border-right: solid white 20px;
-  width: 20px;
+  background-color: white;
+  width: 15px;
+  height: 180px;
+  margin: 30px auto;
+  position: relative;
+  bottom: -100px;
 }
 
 #rodLeft {
-  border-right: solid white 20px;
-  width: 20px;
+  background-color: white;
+  width: 15px;
+  height: 180px;
+  margin: 30px auto;
+  position: relative;
+  bottom: -100px;
+}
+
+#bottomLine {
+  background-color: white;
+  width: 450px;
+  height: 15px;
+  position: relative;
+  bottom: -55px;
+  left: 75px;
+
 }
 
 #selectorBox {
   border: 2px solid rgba(21, 255, 0, 1);
   width: 180px;
-  height: 300px;
+  height: 320px;
   margin: 10px;
   box-shadow: 0 0 20px rgba(21, 255, 0, .8);
+  position: relative;
+  bottom: 250px;
+  left: 0px;
 }
 
 #disc1 {
