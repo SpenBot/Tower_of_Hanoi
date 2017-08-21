@@ -45,10 +45,56 @@ h3 {
   font-size: 20px;
 }
 
+h6 {
+
+}
+
+h5 {
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    justify-content: space-around;
+}
+
 p {
   font-size: 12px;
   line-height: 18px;
 }
+
+
+
+
+.gameWindow {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* //////////////////////// PLAYER INFO ///////////////////////// */
+
+.turnCounter {
+  width: 120px;
+  height: 100px;
+  border: solid white 1px;
+  margin: 30px auto;
+  line-height: 10px;
+}
+
+.turnCounter h5 {
+  position: relative;
+  top: -5px;
+  font-size: 12px;
+}
+
+#turnCountVal {
+  position: relative;
+  top: -30px;
+  font-size: 20px;
+}
+
+
+
 
 
 /*  ////////////////////// INSIDE GAME BOARD //////////////////////////  */
@@ -105,7 +151,7 @@ p {
 
 #selectorBox {
   border: 2px solid rgba(21, 255, 0, 1);
-  width: 180px;
+  width: 175px;
   height: 320px;
   margin: 10px;
   box-shadow: 0 0 20px rgba(21, 255, 0, .8);
