@@ -1,139 +1,68 @@
 
 ///////////////// jQuery Variables //////////////////////
-var disc1Var = $('#disc1')
-var disc2Var = $('#disc2')
-var disc3Var = $('#disc3')
-var disc4Var = $('#disc4')
-var disc5Var = $('#disc5')
 
-var selectorBoxVar = $('#selectorBox')
+var rodLeftJq = $('#rodLeft')
+var rodMiddleJq = $('#rodMiddle')
+var rodRightJq = $('#rodRight')
 
-var rodLeftVar = $('#rodLeft')
-var rodMiddleVar = $('#rodMiddle')
-var rodRightVar = $('#rodRight')
+var selectorBoxJq = $('#selectorBox')
+var turnCountValJq = $('#turnCountVal')
+var discCacheJq = $('#discCache')
 
-var turnCountValVar = $('#turnCountVal')
+// Create Array dsicObjects of jQuery DISC objects
+var discObjects = rodLeftJq.children()
 
-var discCache = null
+/////////// Hide Extra Discs and Selector ///////////
+discObjects.eq(3).hide()
+discObjects.eq(4).hide()
+selectorBoxJq.hide()
 
-/////////////// Assign each DISC variable with property "WEIGHT" ///////////////
+//////////////////// ON-CLICK OF ROD DIV ////////////////////
+  // if CACHE empty, add rod.child[0] to CACHE //
+  // if CACHE NOT empty, add cache to rod //
+rodLeftJq.on("click", function () {
+  var discToMove = $(this).children().eq(0)
 
-disc1Var.weight = 1
-disc2Var.weight = 2
-disc3Var.weight = 3
+  if (discCacheJq.children().length === 0) {
+    discToMove.prependTo(discCacheJq)
+  } else {
+    discCacheJq.children().prependTo(rodLeftJq)
+  }
+})
 
-rodLeftVar.discsArray = []
-rodMiddleVar.discsArray = []
-rodRightVar.discsArray = []
-// consider using .children() on your rod elements, .prepend()
+rodMiddleJq.on("click", function () {
+  var discToMove = $(this).children().eq(0)
 
+  if (discCacheJq.children().length === 0) {
+    discToMove.prependTo(discCacheJq)
+  } else {
+    discCacheJq.children().prependTo(rodMiddleJq)
+  }
+})
 
-/////////// Hide Extra Discs ///////////
-disc4Var.hide()
-disc5Var.hide()
+rodRightJq.on("click", function () {
+  var discToMove = $(this).children().eq(0)
 
-
-//////// USE DATA TAGS for weight ////////////
-//////// Use .children of intial left Rod to create an array of jQ objects /////////
-/////// use .children(0)
-////// use FlexBox on each rod, and push them to the bottom.
-
-
-
-//////////// Function to add DISC variables to discsArray of Left Rod //////////
-function setRodLeftDiscs (discNumVar) {
-    rodLeftVar.discsArray.push(discNumVar)
-}
-
-setRodLeftDiscs(disc3Var)
-setRodLeftDiscs(disc2Var)
-setRodLeftDiscs(disc1Var)
-
-function displayTest () {
-  let firstDisc = rodLeftVar.discsArray.eq(0)
-  console.log(firstDisc);
-  firstDisc.css("background-color", "blue")
-}
-
-displayTest()
+  if (discCacheJq.children().length === 0) {
+    discToMove.prependTo(discCacheJq)
+  } else {
+    discCacheJq.children().prependTo(rodRightJq)
+  }
+})
 
 
 
 
-
-
-
-
-
-
-
-
-// console.log(rodLeftVar.discsArray[rodLeftVar.discsArray.length - 1])
-// console.log(rodLeftVar.discsArray[0])
-// console.log(rodLeftVar.discsArray[1])
-// console.log(rodLeftVar.discsArray[2])
-
-
-
-// maybe make it into a variable?
-
-
-
-
-
-
-// function setRodLeftDisc (discNumVar) {
-//   if (rodLeftVar.discsArray === []) {
-//     rodLeftVar.discsArray.push(discNumVar)
-  // } else if (rodLeftVar.discsArray.last.weight > discNumVar.weight) {
-  //   rodLeftVar.discsArray.push(discNumVar)
-//   } else {
-//     return
-//   }
+// define fuction: Move disc to cache, if cache empty //
+// function moveDiscToCache () {
+  // $(this).children().eq(0).prependTo(discCacheJq)
+  // discToMove.prependTo(discCacheJq)
 // }
 
-// disc1Var.hide()
-// disc2Var.hide()
-// disc3Var.hide()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////// display functions //////////
-// function displayLeftDiscs () {
-//   if (rodLeftVar.discsArray[2] == true) {
-//     rodLeftVar.discsArray.eq(2).css('bottom', '75px')
-//   } else {
-//     return
-//   }
+// define function: Move disc to rod //
+// function moveDiscToRod () {
+//   discCacheJq.children().eq(0).prependTo($(this))
 // }
-//
-// displayLeftDiscs ()
-
-// console.log(rodLeftVar.discsArray.css(''))
-
-
-
-
-
-
-
-
-
-
-// var fruits = ["Banana", "Orange", "Apple", "Mango"];
-// var a = fruits.lastIndexOf("Apple");
 
 
 
@@ -150,9 +79,23 @@ displayTest()
 
 
 
-//////on.mouseover function of div, show selector as white, unless selector is already there///////
-//////on.click function of div, move selector + pop lastChild of discArray in Object////////
-  //// ***** if discCache === true, .push discArray ////
-  //// if lastChild of distination rod is > discCache, place disc at bottom ///
+////// on-click of a rod div, if there is an item in the cache, prepend to div
+////// if div empty, do nothing
+///// if last child0 weight is < cache weight, do nothing
 
-//////on.click function of body, hide selector//////
+
+
+
+
+
+
+////////// test function, move disc to middle rod //////////
+function moveDisc(destination) {
+  rodLeftJq.children().eq(0).prependTo(destination)
+}
+
+
+/////// >>>> fix rod divs, so they can be clicked properly <<<<< //////
+
+//////// USE DATA TAGS for weight
+//////// Fix the rod elements on each rod, with background-color and FlexBox

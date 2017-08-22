@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 
-
   <head>
 
     <meta charset="utf-8">
@@ -14,8 +13,7 @@
   </head>
 
 
-<!------------------------------------------------------>
-<!------------------------------------------------------>
+
   <body>
 
     <header>
@@ -27,7 +25,7 @@
       </nav>
     </header>
 
-<!------------------------------------------------------>
+
     <main>
 
       <div class="instructions">
@@ -38,58 +36,53 @@
 
       <div class="gameWindow">
 
-            <div class="gameBoard">
-
-<!---//////////////////// RODS WITH DISCS IN THEM ////////////////////////////-->
-              <div class="rods">
-
-                  <div id="rodLeft">
-                    <div id="disc1"></div>
-                    <div id="disc2"></div>
-                    <div id="disc3"></div>
-                    <div id="disc4"></div>
-                    <div id="disc5"></div>
-                  </div>
-
-                  <div id="rodMiddle">
-                  </div>
-
-                  <div id="rodRight">
-                  </div>
-
-                </div>
-<!---//////////////////// RODS WITH DISCS IN THEM ////////////////////////////-->
-
-                <div id="bottomLine"></div>
-
-                <div id="selectorBox">
+        <div class="gameBoard">
+            <div class="rods">
+                <div id="rodLeft">
+                  <div class="discsElements" id="disc1" data-weight="1"></div>
+                  <div class="discsElements" id="disc2" data-weight="2"></div>
+                  <div class="discsElements" id="disc3" data-weight="3"></div>
+                  <div class="discsElements" id="disc4" data-weight="4"></div>
+                  <div class="discsElements" id="disc5" data-weight="5"></div>
                 </div>
 
+                <div id="rodMiddle"></div>
+
+                <div id="rodRight"></div>
             </div>
 
-            <div class="playerInfo">
-              <div class="turnCounter">
-                <h5>TURNS:</h5>
-                <h5 div id="turnCountVal">0</h5>
-              </div>
-              <div class="numOfDiscs"></div>
-              <div class="ScoreCounter"></div>
-            </div>
-
+            <div id="bottomLine"></div>
+            <div id="selectorBox"></div>
         </div>
 
+
+          <div class="playerInfo">
+
+            <div class="turnCounter">
+              <h5>TURNS:</h5>
+              <h5 div id="turnCountVal">0</h5>
+            </div>
+
+            <div id="discCache"></div>
+
+            <div class="numOfDiscs"></div>
+
+            <div class="ScoreCounter"></div>
+          </div>
+
+      </div>
+
     </main>
-<!------------------------------------------------------>
+
+
     <footer>
       <h6>PUBLISHED AUGUST 2017</h6>
       <h6>BY SPENSER HOLSTEIN</h6>
     </footer>
-<!------------------------------------------------------>
+
 
     <script src="script.js"></script>
   </body>
-<!------------------------------------------------------>
-<!------------------------------------------------------>
 
 
 </html>
