@@ -1,93 +1,83 @@
 
-///////////////// jQuery Variables //////////////////////
+//////////////////// jQuery Variables /////////////////////////////////
 
 var rodLeftJq = $('#rodLeft')
 var rodMiddleJq = $('#rodMiddle')
 var rodRightJq = $('#rodRight')
 
 var selectorBoxJq = $('#selectorBox')
-var turnCountValJq = $('#turnCountVal')
+var turnCounterJq = $('#turnCountVal')
 var discCacheJq = $('#discCache')
+var winCounterJq = $('#scoreCounterVal')
 
 // Create Array dsicObjects of jQuery DISC objects
 var discObjects = rodLeftJq.children()
 
-/////////// Hide Extra Discs and Selector ///////////
+
+//////////////////// Global Variables /////////////////////////////////
+var currentTurnCount = 0
+var currentWinCount = 0
+
+
+//////////////////// Hide Extra Discs and Selector ////////////////////
 discObjects.eq(3).hide()
 discObjects.eq(4).hide()
 selectorBoxJq.hide()
 
 
+//////////////////// Function to move Disc with Logic /////////////////
+function AddRemoveDisc() {
+
+var currentRod = $(this)
+var discOnTop = $(this).children().eq(0)
+var discWeight = discOnTop.attr('data-weight')
+var discInCache = discCacheJq.children()
+var discCacheWeight = discInCache.eq(0).attr('data-weight')
+
+if (discInCache.length === 0) {
+  discOnTop.prependTo(discCacheJq)
+} else if (discCacheWeight < discWeight) {
+  discInCache.prependTo(currentRod)
+  addTurnCounter()
+} else if (currentRod.children().length === 0) {
+  discInCache.prependTo(currentRod)
+  addTurnCounter()
+} else {
+  return (alert("Invalid move."))
+}
+
+winCondition()
+
+}
 
 
-//////////////////// ON-CLICK OF ROD DIV ////////////////////
-  // if CACHE empty, add rod.child[0] to CACHE //
-  // if CACHE NOT empty, add cache to rod //
-rodLeftJq.on("click", function () {
+//////////////////// 'On-Click' Events of Rod Divs ///////////////////
+rodLeftJq.on("click", AddRemoveDisc)
+rodMiddleJq.on("click", AddRemoveDisc)
+rodRightJq.on("click", AddRemoveDisc)
 
-  var currentRod = $(this)
-  var discOnTop = $(this).children().eq(0)
-  var discWeight = discOnTop.attr('data-weight')
-  var discInCache = discCacheJq.children()
-  var discCacheWeight = discInCache.eq(0).attr('data-weight')
+//////////////////// Win Condition ///////////////////////////////////
+function winCondition() {
+  if (rodMiddleJq.children().length === 3) {
+    setTimeout(function() { alert("You Won!") }, 5)
+    addWinCounter()
+  } else if (rodRightJq.children().length === 3) {
+    setTimeout(function() { alert("You Won!") }, 5)
+    addWinCounter()
+  } else return
+}
 
-  if (discInCache.length === 0) {
-    discOnTop.prependTo(discCacheJq)
-  } else if (discCacheWeight < discWeight) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else if (currentRod.children().length === 0) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else {
-    return (alert("Invalid move."))
-  }
+//////////////////// Turn Counter ///////////////////////////////////
+function addTurnCounter() {
+  currentTurnCount += 1
+  turnCounterJq.text(currentTurnCount)
+}
 
-})
-
-rodMiddleJq.on("click", function () {
-
-  var currentRod = $(this)
-  var discOnTop = $(this).children().eq(0)
-  var discWeight = discOnTop.attr('data-weight')
-  var discInCache = discCacheJq.children()
-  var discCacheWeight = discInCache.eq(0).attr('data-weight')
-
-  if (discInCache.length === 0) {
-    discOnTop.prependTo(discCacheJq)
-  } else if (discCacheWeight < discWeight) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else if (currentRod.children().length === 0) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else {
-    return (alert("invalid"))
-  }
-
-})
-
-rodRightJq.on("click", function () {
-
-  var currentRod = $(this)
-  var discOnTop = $(this).children().eq(0)
-  var discWeight = discOnTop.attr('data-weight')
-  var discInCache = discCacheJq.children()
-  var discCacheWeight = discInCache.eq(0).attr('data-weight')
-
-  if (discInCache.length === 0) {
-    discOnTop.prependTo(discCacheJq)
-  } else if (discCacheWeight < discWeight) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else if (currentRod.children().length === 0) {
-    discCacheJq.children().prependTo(currentRod)
-  }
-  else {
-    return (alert("invalid"))
-  }
-
-})
+//////////////////// Win Counter ////////////////////////////////////
+function addWinCounter() {
+  currentWinCount += 1
+  winCounterJq.text(currentWinCount)
+}
 
 
 
@@ -98,25 +88,20 @@ rodRightJq.on("click", function () {
 
 
 
+//////////////////// To Do //////////////////////////////////////////
+// >>>>>>> Play Again Game Button <<<<<<<<< //
 
 
-
-///////// define function: compare weight of disc and return TRUE/FALSE //////
-// function compareWeight () {
-//   if (discCacheJq.children().eq(0).attr('data-weight') )
-// }
-
-
-
-
-
-/////// Right now, when clicked on an empty rod, its putting an empty children into it. It doenst break anything but probably not good./////
-
-////// Also, the missing discs are still in there //////////////
+//////////////////// Additional Features ////////////////////////////
+// >>>>>>> Fix div clickable area <<<< //
+// >>>>>>> Fix Cache div label <<<<<<< //
+// >>>>>>> Adjust Game Board Size <<<< //
+// >>>>>>> Add In Selector Box <<<<<<< //
+// >>>>>>> Add In Sounds <<<<<<<<<<<<< //
+// >>>>>>> Option to Add More Discs << //
 
 
-
-
-/////// >>>> fix rod divs, so they can be clicked properly <<<<< //////
-
-//////// USE DATA TAGS for weight
+//////////////////// Issues /////////////////////////////////////////
+// When clicked on an empty rod with empty cache, its putting an empty children into it //
+// Also, the missing discs are still in there //
+// Also, the turn counter goes even if you put the disc back (Oh well) //
