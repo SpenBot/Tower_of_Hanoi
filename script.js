@@ -17,37 +17,76 @@ discObjects.eq(3).hide()
 discObjects.eq(4).hide()
 selectorBoxJq.hide()
 
+
+
+
 //////////////////// ON-CLICK OF ROD DIV ////////////////////
   // if CACHE empty, add rod.child[0] to CACHE //
   // if CACHE NOT empty, add cache to rod //
 rodLeftJq.on("click", function () {
-  var discToMove = $(this).children().eq(0)
 
-  if (discCacheJq.children().length === 0) {
-    discToMove.prependTo(discCacheJq)
-  } else {
-    discCacheJq.children().prependTo(rodLeftJq)
+  var currentRod = $(this)
+  var discOnTop = $(this).children().eq(0)
+  var discWeight = discOnTop.attr('data-weight')
+  var discInCache = discCacheJq.children()
+  var discCacheWeight = discInCache.eq(0).attr('data-weight')
+
+  if (discInCache.length === 0) {
+    discOnTop.prependTo(discCacheJq)
+  } else if (discCacheWeight < discWeight) {
+    discCacheJq.children().prependTo(currentRod)
   }
+  else if (currentRod.children().length === 0) {
+    discCacheJq.children().prependTo(currentRod)
+  }
+  else {
+    return (alert("Invalid move."))
+  }
+
 })
 
 rodMiddleJq.on("click", function () {
-  var discToMove = $(this).children().eq(0)
 
-  if (discCacheJq.children().length === 0) {
-    discToMove.prependTo(discCacheJq)
-  } else {
-    discCacheJq.children().prependTo(rodMiddleJq)
+  var currentRod = $(this)
+  var discOnTop = $(this).children().eq(0)
+  var discWeight = discOnTop.attr('data-weight')
+  var discInCache = discCacheJq.children()
+  var discCacheWeight = discInCache.eq(0).attr('data-weight')
+
+  if (discInCache.length === 0) {
+    discOnTop.prependTo(discCacheJq)
+  } else if (discCacheWeight < discWeight) {
+    discCacheJq.children().prependTo(currentRod)
   }
+  else if (currentRod.children().length === 0) {
+    discCacheJq.children().prependTo(currentRod)
+  }
+  else {
+    return (alert("invalid"))
+  }
+
 })
 
 rodRightJq.on("click", function () {
-  var discToMove = $(this).children().eq(0)
 
-  if (discCacheJq.children().length === 0) {
-    discToMove.prependTo(discCacheJq)
-  } else {
-    discCacheJq.children().prependTo(rodRightJq)
+  var currentRod = $(this)
+  var discOnTop = $(this).children().eq(0)
+  var discWeight = discOnTop.attr('data-weight')
+  var discInCache = discCacheJq.children()
+  var discCacheWeight = discInCache.eq(0).attr('data-weight')
+
+  if (discInCache.length === 0) {
+    discOnTop.prependTo(discCacheJq)
+  } else if (discCacheWeight < discWeight) {
+    discCacheJq.children().prependTo(currentRod)
   }
+  else if (currentRod.children().length === 0) {
+    discCacheJq.children().prependTo(currentRod)
+  }
+  else {
+    return (alert("invalid"))
+  }
+
 })
 
 
@@ -62,28 +101,22 @@ rodRightJq.on("click", function () {
 
 
 
+///////// define function: compare weight of disc and return TRUE/FALSE //////
+// function compareWeight () {
+//   if (discCacheJq.children().eq(0).attr('data-weight') )
+// }
 
 
 
 
 
-////// on-click of a rod div, if there is an item in the cache, prepend to div
-////// if div empty, do nothing
-///// if last child0 weight is < cache weight, do nothing
+/////// Right now, when clicked on an empty rod, its putting an empty children into it. It doenst break anything but probably not good./////
+
+////// Also, the missing discs are still in there //////////////
 
 
-
-
-
-
-
-////////// test function, move disc to middle rod //////////
-function moveDisc(destination) {
-  rodLeftJq.children().eq(0).prependTo(destination)
-}
 
 
 /////// >>>> fix rod divs, so they can be clicked properly <<<<< //////
 
 //////// USE DATA TAGS for weight
-//////// Fix the rod elements on each rod, with background-color and FlexBox
