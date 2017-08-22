@@ -155,11 +155,6 @@ p {
 .turnCounter h4 {
   position: relative;
   top: -15px;
-  font-size: 12px;
-}
-#turnCountVal {
-  position: relative;
-  top: -15px;
   font-size: 20px;
 }
 
@@ -171,11 +166,6 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-#discCache h4 {
-  position: relative;
-  top: -15px;
-  font-size: 20px;
 }
 
 .numOfDiscs {

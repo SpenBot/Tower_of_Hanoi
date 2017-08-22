@@ -61,9 +61,11 @@ function winCondition() {
   if (rodMiddleJq.children().length === 3) {
     setTimeout(function() { alert("You Won!") }, 5)
     addWinCounter()
+    // turnCounterJq.text(0)
   } else if (rodRightJq.children().length === 3) {
     setTimeout(function() { alert("You Won!") }, 5)
     addWinCounter()
+    // turnCounterJq.text(0)
   } else return
 }
 
@@ -90,14 +92,15 @@ function addWinCounter() {
 
 //////////////////// To Do //////////////////////////////////////////
 // >>>>>>> Fix Win Condition Left Rod? << //
-// >>>>>>> Play Again Game Button? <<<<<< //
+      //// if wincounter > 1
+      //// reset turns on alert dismiss
 // >>>>>>> Fix div clickable area <<<<<<< //
 
 //////////////////// Additional Features ////////////////////////////
+// >>>>>>> Add In Sounds <<<<<<<<<<<<<<<< //
 // >>>>>>> Fix Cache div label <<<<<<<<<< //
 // >>>>>>> Adjust Game Board Size <<<<<<< //
 // >>>>>>> Add In Selector Box <<<<<<<<<< //
-// >>>>>>> Add In Sounds <<<<<<<<<<<<<<<< //
 // >>>>>>> Option to Add More Discs <<<<< //
 
 
