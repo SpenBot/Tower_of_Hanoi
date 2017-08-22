@@ -9,20 +9,17 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-
 header {
   margin-top: 5px;
   border-bottom: dashed white 5px;
   padding: 0 0 30px 0;
 }
-
 footer {
   border-top: dashed white 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 main {
   margin: 30px auto;
 }
@@ -49,6 +46,9 @@ p {
   line-height: 18px;
 }
 
+
+
+
 .instructions {
   width: 600px;
   margin: 0 auto;
@@ -57,9 +57,7 @@ p {
   padding: 0 80px 5px 80px;
 }
 
-
 /* //////////////////////// MAIN GAME WINDOW ///////////////////////// */
-
 .gameWindow {
   margin: 0 auto;
   display: flex;
@@ -69,15 +67,13 @@ p {
   /*background-color: green;*/
 }
 
-
-
-/*  ////////////////////// GAME BOARD //////////////////////////  */
-
+/*  ////////////////////// GAME BOARD ////////////////////////////////  */
 .gameBoard {
   width: 600px;
   height: 350px;
   border: solid white 8px;
   margin: 30px 0;
+  /*background-color: yellow;*/
 }
 
 .rods {
@@ -86,7 +82,6 @@ p {
   justify-content: space-around;
   /*background-color: red;*/
 }
-
 #rodLeft {
   background-color: white;
   width: 15px;
@@ -99,7 +94,6 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
-
 #rodMiddle {
   background-color: white;
   width: 15px;
@@ -112,7 +106,6 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
-
 #rodRight {
   background-color: white;
   width: 15px;
@@ -146,31 +139,24 @@ p {
   left: 0px;
 }
 
-
-
-
-/* //////////////////////// PLAYER INFO ///////////////////////// */
+/* //////////////////////// PLAYER INFO //////////////////////////////// */
 
 .playerInfo {
   height: 450px;
   /*background-color: blue;*/
 }
 
-
 .turnCounter {
   width: 120px;
   height: 80px;
   border: solid white 1px;
   margin-top: 30px;
-  /*line-height: 10px;*/
 }
-
 .turnCounter h4 {
   position: relative;
   top: -15px;
   font-size: 12px;
 }
-
 #turnCountVal {
   position: relative;
   top: -15px;
@@ -186,7 +172,6 @@ p {
   align-items: center;
   justify-content: center;
 }
-
 #discCache h4 {
   position: relative;
   top: -15px;
@@ -200,7 +185,6 @@ p {
   margin-top: 12px;
   text-align: center;
 }
-
 .numOfDiscs h4 {
   position: relative;
   top: -15px;
@@ -213,43 +197,37 @@ p {
   border: solid white 1px;
   margin-top: 12px;
 }
-
 .scoreCounter h4 {
   position: relative;
   top: -15px;
   font-size: 20px;
 }
 
-/* /////////////  DISCS ////////////////  */
-
+/* ///////////////////  DISCS ////////////////////////////////////////  */
 #disc1 {
   background-color: rgba(255, 254, 0, 1);
   box-shadow: 0 0 20px rgba(255, 254, 0, .8);
   width: 40px;
   height: 20px;
 }
-
 #disc2 {
   background-color: rgba(0, 245, 255, 1);
   box-shadow: 0 0 20px rgba(0, 254, 255, .8);
   width: 70px;
   height: 20px;
 }
-
 #disc3 {
   background-color: rgba(255, 54, 0, 1);
   box-shadow: 0 0 20px rgba(255, 54, 0, .8);
   width: 100px;
   height: 20px;
 }
-
 #disc4 {
   background-color: rgba(0, 49, 255, 1);
   box-shadow: 0 0 20px rgba(0, 49, 255, .8);
   width: 130px;
   height: 20px;
 }
-
 #disc5 {
   background-color: rgba(255, 0, 238, 1);
   box-shadow: 0 0 20px rgba(255, 0, 238, .8);

@@ -1,5 +1,5 @@
 
-//////////////////// jQuery Variables /////////////////////////////////
+//////////////////// jQuery Wrappers /////////////////////////////////
 
 var rodLeftJq = $('#rodLeft')
 var rodMiddleJq = $('#rodMiddle')
@@ -10,7 +10,7 @@ var turnCounterJq = $('#turnCountVal')
 var discCacheJq = $('#discCache')
 var winCounterJq = $('#scoreCounterVal')
 
-// Create Array dsicObjects of jQuery DISC objects
+//////////////////// Create Array of jQuery DISC Wrappers /////////////
 var discObjects = rodLeftJq.children()
 
 
@@ -89,19 +89,20 @@ function addWinCounter() {
 
 
 //////////////////// To Do //////////////////////////////////////////
-// >>>>>>> Play Again Game Button <<<<<<<<< //
-
+// >>>>>>> Fix Win Condition Left Rod? << //
+// >>>>>>> Play Again Game Button? <<<<<< //
+// >>>>>>> Fix div clickable area <<<<<<< //
 
 //////////////////// Additional Features ////////////////////////////
-// >>>>>>> Fix div clickable area <<<< //
-// >>>>>>> Fix Cache div label <<<<<<< //
-// >>>>>>> Adjust Game Board Size <<<< //
-// >>>>>>> Add In Selector Box <<<<<<< //
-// >>>>>>> Add In Sounds <<<<<<<<<<<<< //
-// >>>>>>> Option to Add More Discs << //
+// >>>>>>> Fix Cache div label <<<<<<<<<< //
+// >>>>>>> Adjust Game Board Size <<<<<<< //
+// >>>>>>> Add In Selector Box <<<<<<<<<< //
+// >>>>>>> Add In Sounds <<<<<<<<<<<<<<<< //
+// >>>>>>> Option to Add More Discs <<<<< //
+
 
 
 //////////////////// Issues /////////////////////////////////////////
 // When clicked on an empty rod with empty cache, its putting an empty children into it //
 // Also, the missing discs are still in there //
-// Also, the turn counter goes even if you put the disc back (Oh well) //
+// Also, the turn counter goes even if you put the disc back to same rod (Oh well) //
