@@ -53,18 +53,6 @@ rodRightJq.on("click", function () {
 
 
 
-// define fuction: Move disc to cache, if cache empty //
-// function moveDiscToCache () {
-  // $(this).children().eq(0).prependTo(discCacheJq)
-  // discToMove.prependTo(discCacheJq)
-// }
-
-// define function: Move disc to rod //
-// function moveDiscToRod () {
-//   discCacheJq.children().eq(0).prependTo($(this))
-// }
-
-
 
 
 
