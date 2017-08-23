@@ -24,6 +24,7 @@ var discObjects = rodLeftJq.children()
 var currentTurnCount = 0
 var currentWinCount = 0
 
+var toWinAmount = 3;
 
 //////////////////// Detach Extra Discs and Selector ////////////////////
 discObjects.eq(3).detach()
@@ -56,7 +57,7 @@ if (discInCache.length === 0) {
     alert("Invalid move.")
 }
 
-winCondition()
+winCondition(toWinAmount)
 
 }
 
@@ -67,20 +68,20 @@ rodMiddleJq.on("click", AddRemoveDisc)
 rodRightJq.on("click", AddRemoveDisc)
 
 //////////////////// Win Condition ///////////////////////////////////
-function winCondition() {
-  if (rodMiddleJq.children().length === 3) {
+function winCondition(toWinAmountNum) {
+  if (rodMiddleJq.children().length === toWinAmountNum) {
     setTimeout(function() {
       document.getElementById('winBloop').play()
       alert("You Won!");
       turnCounterJq.text(0) }, 5)
     addWinCounter()
-  } else if (rodRightJq.children().length === 3) {
+  } else if (rodRightJq.children().length === toWinAmountNum) {
     setTimeout(function() {
       document.getElementById('winBloop').play()
       alert("You Won!");
       turnCounterJq.text(0) }, 5)
     addWinCounter()
-  } else if ( (currentWinCount > 0) && (rodLeftJq.children().length === 3) ) {
+  } else if ( (currentWinCount > 0) && (rodLeftJq.children().length === toWinAmountNum) ) {
         setTimeout(function() {
           document.getElementById('winBloop').play()
           alert("You Won!");
@@ -125,6 +126,7 @@ function setDisc() {
     currentTurnCount = 0
     turnCounterJq.text(currentTurnCount)
     $('#numOfDiscsVal').text("4")
+    toWinAmount = 4
   } else if ( $('#userInput').val() == 5 ) {
     discObjects.detach()
     discObjects.eq(4).prependTo(rodLeftJq)
@@ -135,6 +137,7 @@ function setDisc() {
     currentTurnCount = 0
     turnCounterJq.text(currentTurnCount)
     $('#numOfDiscsVal').text("5")
+    toWinAmount = 5
   } else if ( $('#userInput').val() == 3 ) {
     discObjects.detach()
     discObjects.eq(2).prependTo(rodLeftJq)
@@ -143,6 +146,7 @@ function setDisc() {
     currentTurnCount = 0
     turnCounterJq.text(currentTurnCount)
     $('#numOfDiscsVal').text("3")
+    toWinAmount = 3
   }
   //   else {
   //     alert("Enter in 3, 4, or 5 to change discs.")
