@@ -21,7 +21,7 @@ footer {
   justify-content: space-between;
 }
 main {
-  margin: 30px auto 0 auto;
+  margin: 30px auto 30px auto;
 }
 
 h1 {
@@ -84,7 +84,7 @@ p {
 }
 #rodLeft {
   background-color: white;
-  width: 15px;
+  width: 25px;
   height: 160px;
   margin: 30px auto;
   position: relative;
@@ -93,10 +93,14 @@ p {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+}
+#rodLeft:hover {
+  background-color: rgba(21, 255, 0, .9);
+  box-shadow: 0 0 30px rgba(21, 255, 0, .8);
 }
 #rodMiddle {
   background-color: white;
-  width: 15px;
+  width: 25px;
   height: 160px;
   margin: 30px auto;
   position: relative;
@@ -106,9 +110,13 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
+#rodMiddle:hover {
+  background-color: rgba(21, 255, 0, 1);
+  box-shadow: 0 0 30px rgba(21, 255, 0, .8);
+}
 #rodRight {
   background-color: white;
-  width: 15px;
+  width: 25px;
   height: 160px;
   margin: 30px auto;
   position: relative;
@@ -117,6 +125,10 @@ p {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+}
+#rodRight:hover {
+  background-color: rgba(21, 255, 0, 1);
+  box-shadow: 0px 0px 30px rgba(21, 255, 0, .8);
 }
 
 #bottomLine {
@@ -193,7 +205,7 @@ p {
   font-size: 20px;
 }
 
-/*#userInput {
+#userInput {
   height: 20px;
   width: 160px;
   font-size: 14px;
@@ -202,7 +214,7 @@ p {
   color: white;
   font-family: 'Press Start 2P', sans-serif;
   font-size: 8px;
-}*/
+}
 
 /* ///////////////////  DISCS ////////////////////////////////////////  */
 #disc1 {

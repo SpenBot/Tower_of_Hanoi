@@ -10,6 +10,11 @@ var turnCounterJq = $('#turnCountVal')
 var discCacheJq = $('#discCache')
 var winCounterJq = $('#scoreCounterVal')
 
+var leftAreaJq = $('leftSelectArea')
+var rightAreaJq = $('rightSelectArea')
+
+// var numOfDiscsJq = $('#numOfDiscsVal')
+
 // var DiscNumInput = $('#userInput')
 
 var discObjects = rodLeftJq.children()
@@ -108,27 +113,48 @@ document.getElementById('introBloop').play()
 
 
 
-//////////////////// Disc Setter ////////////////////////////////////
-// function setDisc (event) {
-//   console.log("button pushed")
-//
-//   event.preventDefault()
-//
-//   if ( $('#userInput').val() == 4 ) {
-//     discObjects.eq(3).show()
-//   } else if ( $('#userInput').val() == 5 ) {
-//     discObjects.eq(3).show()
-//     discObjects.eq(4).show()
-//   } else if ( $('#userInput').val() == 3 ) {
-//     discObjects.eq(3).hide()
-//     discObjects.eq(4).hide()
-//   } else {
-//     alert("Enter in 3, 4, or 5 to change discs.")
-//   }
-//
-// }
+////////////////// Disc Setter ////////////////////////////////////
+function setDisc() {
 
-//////////////////// Run Disc Setter on User Input ////////////////////
-// $('#userInput').on("input", setDisc)
+  if ( $('#userInput').val() == 4 ) {
+    discObjects.detach()
+    discObjects.eq(3).prependTo(rodLeftJq)
+    discObjects.eq(2).prependTo(rodLeftJq)
+    discObjects.eq(1).prependTo(rodLeftJq)
+    discObjects.eq(0).prependTo(rodLeftJq)
+    currentTurnCount = 0
+    turnCounterJq.text(currentTurnCount)
+    $('#numOfDiscsVal').text("4")
+  } else if ( $('#userInput').val() == 5 ) {
+    discObjects.detach()
+    discObjects.eq(4).prependTo(rodLeftJq)
+    discObjects.eq(3).prependTo(rodLeftJq)
+    discObjects.eq(2).prependTo(rodLeftJq)
+    discObjects.eq(1).prependTo(rodLeftJq)
+    discObjects.eq(0).prependTo(rodLeftJq)
+    currentTurnCount = 0
+    turnCounterJq.text(currentTurnCount)
+    $('#numOfDiscsVal').text("5")
+  } else if ( $('#userInput').val() == 3 ) {
+    discObjects.detach()
+    discObjects.eq(2).prependTo(rodLeftJq)
+    discObjects.eq(1).prependTo(rodLeftJq)
+    discObjects.eq(0).prependTo(rodLeftJq)
+    currentTurnCount = 0
+    turnCounterJq.text(currentTurnCount)
+    $('#numOfDiscsVal').text("3")
+  }
+  //   else {
+  //     alert("Enter in 3, 4, or 5 to change discs.")
+  // }
 
-//////////////////// Reset Discs ////////////////////////////////////
+}
+
+////////////////// Run Disc Setter on User Input ////////////////////
+$('#userInput').on('input', function() {
+  setDisc()
+})
+
+$('#form').submit(function(event) {
+  event.preventDefault();
+})
