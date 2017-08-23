@@ -10,7 +10,8 @@ var turnCounterJq = $('#turnCountVal')
 var discCacheJq = $('#discCache')
 var winCounterJq = $('#scoreCounterVal')
 
-//////////////////// Create Array of jQuery DISC Wrappers /////////////
+// var DiscNumInput = $('#userInput')
+
 var discObjects = rodLeftJq.children()
 
 
@@ -20,8 +21,8 @@ var currentWinCount = 0
 
 
 //////////////////// Hide Extra Discs and Selector ////////////////////
-discObjects.eq(3).hide()
-discObjects.eq(4).hide()
+discObjects.eq(3).detach()
+discObjects.eq(4).detach()
 selectorBoxJq.hide()
 
 
@@ -59,14 +60,15 @@ rodRightJq.on("click", AddRemoveDisc)
 //////////////////// Win Condition ///////////////////////////////////
 function winCondition() {
   if (rodMiddleJq.children().length === 3) {
-    setTimeout(function() { alert("You Won!") }, 5)
+    setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
     addWinCounter()
-    // turnCounterJq.text(0)
   } else if (rodRightJq.children().length === 3) {
-    setTimeout(function() { alert("You Won!") }, 5)
+    setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
     addWinCounter()
-    // turnCounterJq.text(0)
-  } else return
+  } else if ( (currentWinCount > 0) && (rodLeftJq.children().length === 3) ) {
+        setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
+        addWinCounter()
+  }
 }
 
 //////////////////// Turn Counter ///////////////////////////////////
@@ -81,31 +83,27 @@ function addWinCounter() {
   winCounterJq.text(currentWinCount)
 }
 
+//////////////////// Disc Setter ////////////////////////////////////
+// function setDisc (event) {
+//   console.log("button pushed")
+//
+//   event.preventDefault()
+//
+//   if ( $('#userInput').val() == 4 ) {
+//     discObjects.eq(3).show()
+//   } else if ( $('#userInput').val() == 5 ) {
+//     discObjects.eq(3).show()
+//     discObjects.eq(4).show()
+//   } else if ( $('#userInput').val() == 3 ) {
+//     discObjects.eq(3).hide()
+//     discObjects.eq(4).hide()
+//   } else {
+//     alert("Enter in 3, 4, or 5 to change discs.")
+//   }
+//
+// }
 
+//////////////////// Run Disc Setter on User Input ////////////////////
+// $('#userInput').on("input", setDisc)
 
-
-
-
-
-
-
-
-//////////////////// To Do //////////////////////////////////////////
-// >>>>>>> Fix Win Condition Left Rod? << //
-      //// if wincounter > 1
-      //// reset turns on alert dismiss
-// >>>>>>> Fix div clickable area <<<<<<< //
-
-//////////////////// Additional Features ////////////////////////////
-// >>>>>>> Add In Sounds <<<<<<<<<<<<<<<< //
-// >>>>>>> Fix Cache div label <<<<<<<<<< //
-// >>>>>>> Adjust Game Board Size <<<<<<< //
-// >>>>>>> Add In Selector Box <<<<<<<<<< //
-// >>>>>>> Option to Add More Discs <<<<< //
-
-
-
-//////////////////// Issues /////////////////////////////////////////
-// When clicked on an empty rod with empty cache, its putting an empty children into it //
-// Also, the missing discs are still in there //
-// Also, the turn counter goes even if you put the disc back to same rod (Oh well) //
+//////////////////// Reset Discs ////////////////////////////////////
