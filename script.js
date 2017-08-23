@@ -20,10 +20,10 @@ var currentTurnCount = 0
 var currentWinCount = 0
 
 
-//////////////////// Hide Extra Discs and Selector ////////////////////
+//////////////////// Detach Extra Discs and Selector ////////////////////
 discObjects.eq(3).detach()
 discObjects.eq(4).detach()
-selectorBoxJq.hide()
+selectorBoxJq.detach()
 
 
 //////////////////// Function to move Disc with Logic /////////////////
@@ -37,14 +37,18 @@ var discCacheWeight = discInCache.eq(0).attr('data-weight')
 
 if (discInCache.length === 0) {
   discOnTop.prependTo(discCacheJq)
+  document.getElementById('beep1').play()
 } else if (discCacheWeight < discWeight) {
   discInCache.prependTo(currentRod)
+  document.getElementById('beep2').play()
   addTurnCounter()
 } else if (currentRod.children().length === 0) {
   discInCache.prependTo(currentRod)
+  document.getElementById('beep2').play()
   addTurnCounter()
 } else {
-  return (alert("Invalid move."))
+    document.getElementById('errorBeep').play()
+    alert("Invalid move.")
 }
 
 winCondition()
@@ -60,13 +64,22 @@ rodRightJq.on("click", AddRemoveDisc)
 //////////////////// Win Condition ///////////////////////////////////
 function winCondition() {
   if (rodMiddleJq.children().length === 3) {
-    setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
+    setTimeout(function() {
+      document.getElementById('winBloop').play()
+      alert("You Won!");
+      turnCounterJq.text(0) }, 5)
     addWinCounter()
   } else if (rodRightJq.children().length === 3) {
-    setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
+    setTimeout(function() {
+      document.getElementById('winBloop').play()
+      alert("You Won!");
+      turnCounterJq.text(0) }, 5)
     addWinCounter()
   } else if ( (currentWinCount > 0) && (rodLeftJq.children().length === 3) ) {
-        setTimeout(function() { alert("You Won!"); turnCounterJq.text(0)}, 5)
+        setTimeout(function() {
+          document.getElementById('winBloop').play()
+          alert("You Won!");
+          turnCounterJq.text(0) }, 5)
         addWinCounter()
   }
 }
@@ -82,6 +95,18 @@ function addWinCounter() {
   currentWinCount += 1
   winCounterJq.text(currentWinCount)
 }
+
+
+//////////////////// Play Intro Music ///////////////////////////////
+document.getElementById('introBloop').play()
+
+
+
+
+
+
+
+
 
 //////////////////// Disc Setter ////////////////////////////////////
 // function setDisc (event) {
