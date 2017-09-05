@@ -13,9 +13,7 @@ var winCounterJq = $('#scoreCounterVal')
 var leftAreaJq = $('leftSelectArea')
 var rightAreaJq = $('rightSelectArea')
 
-// var numOfDiscsJq = $('#numOfDiscsVal')
-
-// var DiscNumInput = $('#userInput')
+// AS - remove commented out code
 
 var discObjects = rodLeftJq.children()
 
@@ -24,7 +22,7 @@ var discObjects = rodLeftJq.children()
 var currentTurnCount = 0
 var currentWinCount = 0
 
-var toWinAmount = 3;
+var toWinAmount = 3
 
 //////////////////// Detach Extra Discs and Selector ////////////////////
 discObjects.eq(3).detach()
@@ -34,31 +32,27 @@ selectorBoxJq.detach()
 
 //////////////////// Function to move Disc with Logic /////////////////
 function AddRemoveDisc() {
+  // AS - indent the body of functions
+  var currentRod = $(this)
+  var discOnTop = $(this).children().eq(0)
+  var discWeight = discOnTop.attr('data-weight')
+  var discInCache = discCacheJq.children()
+  var discCacheWeight = discInCache.eq(0).attr('data-weight')
 
-var currentRod = $(this)
-var discOnTop = $(this).children().eq(0)
-var discWeight = discOnTop.attr('data-weight')
-var discInCache = discCacheJq.children()
-var discCacheWeight = discInCache.eq(0).attr('data-weight')
-
-if (discInCache.length === 0) {
-  discOnTop.prependTo(discCacheJq)
-  document.getElementById('beep1').play()
-} else if (discCacheWeight < discWeight) {
-  discInCache.prependTo(currentRod)
-  document.getElementById('beep2').play()
-  addTurnCounter()
-} else if (currentRod.children().length === 0) {
-  discInCache.prependTo(currentRod)
-  document.getElementById('beep2').play()
-  addTurnCounter()
-} else {
+  if (discInCache.length === 0) {
+    discOnTop.prependTo(discCacheJq)
+    document.getElementById('beep1').play()
+  } else if (discCacheWeight < discWeight || currentRod.children().length === 0) {
+    // AS - put in two conditions instead of repeating the code
+    discInCache.prependTo(currentRod)
+    document.getElementById('beep2').play()
+    addTurnCounter()
+  } else {
     document.getElementById('errorBeep').play()
     alert("Invalid move.")
-}
+  }
 
-winCondition(toWinAmount)
-
+  winCondition(toWinAmount)
 }
 
 
@@ -69,24 +63,18 @@ rodRightJq.on("click", AddRemoveDisc)
 
 //////////////////// Win Condition ///////////////////////////////////
 function winCondition(toWinAmountNum) {
-  if (rodMiddleJq.children().length === toWinAmountNum) {
+  // AS - use consistent indentation and semicolons
+  // Since the bodies of the if statements are the same, you can do something
+  // like the below. I would also abstract that if condition to be elsewhere
+  if (rodMiddleJq.children().length === toWinAmountNum ||
+      rodRightJq.children().length === toWinAmountNum  ||
+      (currentWinCount > 0 && rodLeftJq.children().length === toWinAmountNum)
+  ) {
     setTimeout(function() {
       document.getElementById('winBloop').play()
-      alert("You Won!");
+      alert("You Won!")
       turnCounterJq.text(0) }, 5)
     addWinCounter()
-  } else if (rodRightJq.children().length === toWinAmountNum) {
-    setTimeout(function() {
-      document.getElementById('winBloop').play()
-      alert("You Won!");
-      turnCounterJq.text(0) }, 5)
-    addWinCounter()
-  } else if ( (currentWinCount > 0) && (rodLeftJq.children().length === toWinAmountNum) ) {
-        setTimeout(function() {
-          document.getElementById('winBloop').play()
-          alert("You Won!");
-          turnCounterJq.text(0) }, 5)
-        addWinCounter()
   }
 }
 
@@ -106,52 +94,21 @@ function addWinCounter() {
 //////////////////// Play Intro Music ///////////////////////////////
 document.getElementById('introBloop').play()
 
-
-
-
-
-
-
-
-
+// AS - Use consistent spacing between code blocks
 ////////////////// Disc Setter ////////////////////////////////////
 function setDisc() {
-
-  if ( $('#userInput').val() == 4 ) {
-    discObjects.detach()
-    discObjects.eq(3).prependTo(rodLeftJq)
-    discObjects.eq(2).prependTo(rodLeftJq)
-    discObjects.eq(1).prependTo(rodLeftJq)
-    discObjects.eq(0).prependTo(rodLeftJq)
-    currentTurnCount = 0
-    turnCounterJq.text(currentTurnCount)
-    $('#numOfDiscsVal').text("4")
-    toWinAmount = 4
-  } else if ( $('#userInput').val() == 5 ) {
-    discObjects.detach()
-    discObjects.eq(4).prependTo(rodLeftJq)
-    discObjects.eq(3).prependTo(rodLeftJq)
-    discObjects.eq(2).prependTo(rodLeftJq)
-    discObjects.eq(1).prependTo(rodLeftJq)
-    discObjects.eq(0).prependTo(rodLeftJq)
-    currentTurnCount = 0
-    turnCounterJq.text(currentTurnCount)
-    $('#numOfDiscsVal').text("5")
-    toWinAmount = 5
-  } else if ( $('#userInput').val() == 3 ) {
-    discObjects.detach()
-    discObjects.eq(2).prependTo(rodLeftJq)
-    discObjects.eq(1).prependTo(rodLeftJq)
-    discObjects.eq(0).prependTo(rodLeftJq)
-    currentTurnCount = 0
-    turnCounterJq.text(currentTurnCount)
-    $('#numOfDiscsVal').text("3")
-    toWinAmount = 3
+  // AS - you could reconfigure your code to something like this
+  // which would make any number of discs work and be more DRY
+  // You could also draw your elements originally in JQuery
+  // so that you don't have to hardcode them on the home page.
+  // you could pick a random color to have differentiation there.
+  var numDiscs = $('#userInput').val()
+  discObjects.detach()
+  for (var i = numDiscs; i >= 0; i--) {
+    discObjects.eq(i).prependTo(rodLeftJq)
   }
-  //   else {
-  //     alert("Enter in 3, 4, or 5 to change discs.")
-  // }
-
+  turnCounterJq.text(0)
+  $('#numOfDiscsVal').text(numDiscs)
 }
 
 ////////////////// Run Disc Setter on User Input ////////////////////
